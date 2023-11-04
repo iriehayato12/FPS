@@ -73,6 +73,7 @@ Rails.application.configure do
   config.hosts.clear
   
   config.web_console.whitelisted_ips = '182.165.239.188'
+  config.active_job.queue_adapter = :inline
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end

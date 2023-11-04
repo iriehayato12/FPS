@@ -1,0 +1,36 @@
+ <div class="container mt-5">
+   <div classs="row justify-content-center">
+    <div class="col-md-10">
+        <h2>投稿一覧</h2>
+        <table class="table table-hover table-inverse ">
+         <thead>
+          <tr>
+           <td></td>
+           <td>タイトル</td>
+           <td>内容</td>
+           <td>カテゴリー</td>
+           <td colspan="3"></td>
+          </tr>
+         </thead>
+         
+         <tbody>
+          <% @posts.each do |post| %>
+          <tr>
+          <td>
+              <%= link_to user_path(post.user.id), class:"text-warning" do %>
+              <%= image_tag post.user.get_profile_image(100,100) %><br>
+              <%= post.user.name %>
+              <% end %>
+          </td>
+          <td><%= link_to post.title, post_path(post.id), class:"text-warning"%></td>
+          <td><%= post.body %></td>
+          <td><%= post.category.name %></td>
+          </tr>
+          <% end %>
+          <%= paginate @posts %>
+         </tbody>
+        </table>
+    </div>
+   </div>
+ </div>
+ 
