@@ -6,7 +6,7 @@ before_action :ensure_guest_user, only: [:edit]
     if resource_or_scope.is_a?(Admin)
       admin_path
     else
-      root_path
+      posts_path
     end
   end
   
@@ -23,7 +23,7 @@ before_action :ensure_guest_user, only: [:edit]
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-     redirect_to root_path, notice: "ゲストユーザーはプロフィール編集画面に遷移できません"
+     redirect_to posts_path, notice: "ゲストユーザーはプロフィール編集画面に遷移できません"
     end
   end
   

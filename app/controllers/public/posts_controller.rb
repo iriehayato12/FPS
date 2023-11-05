@@ -8,6 +8,8 @@ class Public::PostsController < ApplicationController
   end
   
   def edit
+    @post = Post.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def show
@@ -15,13 +17,15 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-     flash[:notice] = "You have created book successfully"
      redirect_to post_path(@post)
     else
     @posts = Post.all

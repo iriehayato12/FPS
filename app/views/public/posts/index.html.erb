@@ -1,30 +1,30 @@
  <div class="container mt-5">
    <div classs="row justify-content-center">
     <div class="col-md-10">
-        <h2>投稿一覧</h2>
-        <table class="table table-hover table-inverse ">
+        <h2><span style = "background-color: #eee" >投稿一覧</span></h2>
+        <table class="table table-hover table-inverse", style="table-layout:fixed;width:100%;">
          <thead>
           <tr>
-           <td></td>
-           <td>タイトル</td>
-           <td>内容</td>
-           <td>カテゴリー</td>
-           <td colspan="3"></td>
+           <th style="width:33%;">投稿者</th>
+           <th style="width:33%;">タイトル</th>
+           <th style="width:33%;">内容</th>
+           <th style="width:33%;">カテゴリー</th>
+           <th colspan="3"></th>
           </tr>
          </thead>
          
          <tbody>
           <% @posts.each do |post| %>
           <tr>
-          <td>
+          <td style="width:33%;">
               <%= link_to user_path(post.user.id), class:"text-warning" do %>
               <%= image_tag post.user.get_profile_image(100,100) %><br>
               <%= post.user.name %>
               <% end %>
           </td>
-          <td><%= link_to post.title, post_path(post.id), class:"text-warning"%></td>
-          <td><%= post.body %></td>
-          <td><%= post.category.name %></td>
+          <td style="width:33%;"><%= link_to post.title, post_path(post.id), class:"text-warning"%></td>
+          <td style="width:33%;"><%= post.body %></td>
+          <td style="width:33%;"><%= post.category.name %></td>
           </tr>
           <% end %>
           <%= paginate @posts %>
