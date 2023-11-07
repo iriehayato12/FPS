@@ -1,5 +1,28 @@
-<h1><%= flash[:notice] %></h1>
 
-<div class="row">
-  <%= link_to "編集",edit_user_path(@user),class: "btn btn-outline-secondary btn-block"  %>
+<div class="container mt-3"> 
+   
+        <div class="row mt-4 ml-5">
+            <div class="col-md-3 offset-md-3">
+         <h3><span class="bg-dark text-light">マイページ</span></h3>
+            </div>
+        </div>
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <table class="table table-border table-dark">
+                <tr>
+                    <td class="text-center pt-4">プロフィール画像</td>
+                    <td><%= image_tag @user.get_profile_image(50,50) %></td>
+                </tr>
+                <tr>
+                    <td class="text-center">名前</td>
+                    <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                    <td class="text-center">自己紹介</td>
+                    <td><%= @user.introduction %></td>
+                </tr>
+            </table>
+             <%= link_to "編集",edit_user_path(@user),class: "btn btn-primary"  %>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,20 @@
+<div class="category_search">
+  <table class="table custom_table ml-3">
+    <tr>
+      <th class='text-center'>カテゴリー検索</th>
+    </tr>
+
+    <%= form_with url: category_search_path, method: :get do |f| %>
+      <% @categories.each do |category| %>
+        <tr>
+          <td class="text-center">
+            <%= link_to category_search_path(category_id: category.id), method: :get, class: 'btn btn-light' do %>
+              <%= category.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </table>
+</div>

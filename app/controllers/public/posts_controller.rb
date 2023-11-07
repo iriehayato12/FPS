@@ -5,6 +5,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page])
+    @categories = Category.all
   end
   
   def edit
@@ -14,6 +15,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @categories = Category.all
   end
 
   def destroy
