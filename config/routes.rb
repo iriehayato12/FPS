@@ -26,15 +26,13 @@ Rails.application.routes.draw do
   scope module: :public do
    root "homes#top"
    get "about" => "homes#about"
+   #退会処理
+   patch "users/withdraw" => "users#withdraw"
    resources :users, only: [:show, :edit, :update] do
      member do
       get :favorites 
      end
     end
-   #退会処理関係
-   get "users/confirm_withdraw" => "users#confirm_withdraw"
-   patch "users/withdraw" => "users#withdraw"
-   
    resources :posts, only: [:new, :index, :show, :create, :destroy, :update, :edit] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]

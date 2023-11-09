@@ -29,10 +29,18 @@ class Public::UsersController < ApplicationController
     @categories = Category.all
   end
   
+  def withdraw
+    @user = current_user
+    @user.update(is_active: false)
+    reset_session
+    redirect_to root_path
+  end
+    
+  
   private
   
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :is_active)
   end
   
   def ensure_guest_user

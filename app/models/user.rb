@@ -29,4 +29,8 @@ class User < ApplicationRecord
    profile_image.variant(resize_to_limit: [width, height]).processed
   end
   
+  def active_for_authentication?
+    super && (self.is_active == true)
+  end
+  
 end
