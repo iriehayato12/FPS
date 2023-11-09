@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   scope module: :public do
    root "homes#top"
    get "about" => "homes#about"
-   resources :users, only: [:show, :edit, :update]
+   resources :users, only: [:show, :edit, :update] do
+     member do
+      get :favorites 
+     end
+    end
    #退会処理関係
    get "users/confirm_withdraw" => "users#confirm_withdraw"
    patch "users/withdraw" => "users#withdraw"
@@ -39,6 +43,5 @@ Rails.application.routes.draw do
    get "/category/search" => "searches#search_category"
   end
   
- end
    
-
+end

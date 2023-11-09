@@ -3,7 +3,7 @@
    
         <div class="row mt-4 ml-5">
             <div class="col-md-3 offset-md-3">
-         <h3><span class="bg-dark text-light">マイページ</span></h3>
+        <% if @user == current_user %> <h3><span class="bg-dark text-light">マイページ</span></h3> <% end %>
             </div>
         </div>
     <div class="row mt-3">
@@ -23,6 +23,7 @@
                 </tr>
             </table>
              <%= link_to "編集",edit_user_path(@user),class: "btn btn-primary"  %>
+             <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
         </div>
     </div>
 </div>

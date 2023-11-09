@@ -1,7 +1,7 @@
- <div class="container mt-5">
+<div class="container mt-5">
    <div classs="row justify-content-center">
     <div class="col-md-10">
-        <h2><span class="bg-dark text-light" >投稿一覧</span></h2>
+        <h2><span class="bg-dark text-light" >いいね投稿一覧</span></h2>
         <table class="table table-hover table-inverse", style="table-layout:fixed;width:100%;">
          <thead>
           <tr>
@@ -16,7 +16,7 @@
          </thead>
          
          <tbody>
-          <% @posts.each do |post| %>
+          <% @favorite_posts.each do |post| %>
           <tr>
           <td style="width:33%;">
               <%= link_to user_path(post.user.id), class:"text-warning" do %>
@@ -39,4 +39,3 @@
     </div>
    </div>
  </div>
- 
