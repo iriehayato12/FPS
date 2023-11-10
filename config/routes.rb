@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
    get "/" => "homes#top"
    resources :users, only: [:index, :show, :edit, :update]
-   resources :posts, only: [:index, :show, :destroy] 
+   resources :posts, only: [:index, :show, :destroy] do
+     resources :post_comments, only: [:show, :destroy]
+   end
    get "search" => "searches#search"
    resources :categories, only: [:index, :create, :edit, :destroy]
   end
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
    end
-   
+   get "search" => "posts#search_name"
    get "/category/search" => "searches#search_category"
   end
   

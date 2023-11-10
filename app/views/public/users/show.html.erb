@@ -1,13 +1,16 @@
 
 <div class="container mt-3"> 
-   
         <div class="row mt-4 ml-5">
-            <div class="col-md-3 offset-md-3">
-        <% if @user == current_user %> <h3><span class="bg-dark text-light">マイページ</span></h3> <% end %>
+            <div class="col-md-3 offset-md-1">
+        <% if @user == current_user %> 
+        　　<h3 class="text-center"><span class="bg-dark text-light">マイページ</span></h3>
+        <% else %>
+            <h4><span class="bg-dark text-light text-nowrap"><%= @user.name %>さんのユーザー情報</span></h4>
+        <% end %>
             </div>
         </div>
     <div class="row mt-3">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <table class="table table-border table-dark">
                 <tr>
                     <td class="text-center pt-4">プロフィール画像</td>
@@ -22,7 +25,9 @@
                     <td><%= @user.introduction %></td>
                 </tr>
             </table>
+            <% if @user == current_user %>
              <%= link_to "編集",edit_user_path(@user),class: "btn btn-primary"  %>
+            <% end %>
              <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
         </div>
     </div>

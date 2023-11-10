@@ -7,4 +7,8 @@ class Post < ApplicationRecord
  def favorited_by?(user)
   favorites.exists?(user_id: user.id)
  end
+ 
+  def self.search(content)
+    Post.where("body LIKE? or title LIKE?","%#{content}%", "%#{content}%")
+  end
 end

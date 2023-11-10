@@ -1,2 +1,31 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class = "container mt-4">
+    <h2 class="mt-4"> <span class="bg-dark text-light">投稿詳細</span></h2>
+    
+   <div class="border border-dark">
+    <div class="row mt-4 w-100 ml-3">
+        <%= image_tag @post.user.get_profile_image(50,50) %>
+        <%= link_to admin_user_path(@post.user_id), class:"text-warning pt-2 pl-1" do %>
+         <%= @post.user.name %>
+        <% end %>
+    </div>
+    
+    <div class="row mt-3">
+     <div class="col-md-8">
+        <h3><span class="bg-secondary ml-3">タイトル</span> <%= "" %> <%= @post.title %></h3>
+     </div>
+    </div>
+    
+    <div class="row mt-3  border-dark">
+     <div class="col-md-8 border-dark d-flex">
+        <h3 class="w-25 mt-2"><span class="bg-secondary ml-3">内容</span></h3>　<h4 class="border border-dark bg-light"><span><%= @post.body %></span></h4>
+     </div>
+    </div>
+   </div>
+    
+    <div class="row mt-3 text-center">
+      <%= link_to "削除する", admin_post_path, method: :delete, class:"btn btn-danger ml-4", data: {confirm: "投稿を削除しますか？"} %>
+    </div>
+    <small>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></small>
+    
+    <div id="comment_index"><%= render "admin/post_comments/index", post: @post %></div>
+</div>

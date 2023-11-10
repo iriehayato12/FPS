@@ -1,4 +1,6 @@
-<h2>Log in</h2>
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="col-md-6">
+<h2><span>管理者用ログイン</span></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -24,3 +26,6 @@
 <% end %>
 
 <%= render "admin/shared/links" %>
+
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.page(params[:page])
   end
 
   def show
@@ -9,6 +9,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+  end
+  
+  def withdraw
+    @user = User.find(params[:id])
+    @user.update(is_active: false)
+    reset_session
+    redirect_to admin_posts_path
   end
 
   def update

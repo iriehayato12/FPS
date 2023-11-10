@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def index
@@ -38,6 +39,14 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+  end
+  
+  def search_name
+    posts_per_page = 8
+    @content = params[:content]
+    @records = Post.search(@content).page(params[:page]).per(posts_per_page)
+    @categories = Category.all
+    @posts = Post.page(params[:page])
   end
   
   private
