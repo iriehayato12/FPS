@@ -22,7 +22,7 @@ Rails.application.routes.draw do
      resources :post_comments, only: [:show, :destroy]
    end
    get "search" => "searches#search"
-   resources :categories, only: [:index, :create, :edit, :destroy]
+   resources :categories, only: [:index, :create, :edit, :destroy, :update, :destroy]
   end
   
   scope module: :public do
@@ -41,6 +41,8 @@ Rails.application.routes.draw do
    end
    get "search" => "posts#search_name"
    get "/category/search" => "searches#search_category"
+   #通知機能
+   resources :notifications, only: [:index, :destroy]
   end
   
    

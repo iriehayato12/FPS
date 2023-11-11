@@ -8,6 +8,7 @@
            <th style="width:33%;">プロフィール画像</th>
            <th style="width:33%;">名前</th>
            <th style="width:33%;">いいね件数</th>
+           <th style="width:33%;">ユーザーステータス</th>
            <th colspan="3"></th>
           </tr>
          </thead>
@@ -23,6 +24,11 @@
           </td>
           <td style="width:33%;"><%= user.name %></td>
           <td style="width:33%;"><%= user.favorites.count %>件</td>
+           <% if user.is_active == true %>
+            <td><strong style="color: green;">有効</strong></td>
+           <% else %>
+            <td><strong style="color: red;">退会済</strong></td>
+           <% end %>
           </tr>
           <% end %>
           <%= paginate @users %>

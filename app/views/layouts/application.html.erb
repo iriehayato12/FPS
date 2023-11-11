@@ -49,6 +49,16 @@
                 <% end %>
               </li>
               <li class="nav-item ml-2">
+                <%= link_to notifications_path, class: "btn btn-light" do %>
+                  <% if current_user.notifications.where(checked: false).exists? %>
+                   <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
+                  <% else %>
+                   <i class="fa-sharp fa-solid fa-bell"></i>
+                   <% end %>
+                   通知一覧
+                <% end %>
+              </li>
+              <li class="nav-item ml-2">
                 <%= link_to destroy_user_session_path, class: "btn btn-light mr-3" do %>
                 <span><i class="fa-solid fa-right-from-bracket"></i>ログアウト</span>
                 <% end %>

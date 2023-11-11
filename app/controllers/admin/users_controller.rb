@@ -9,15 +9,19 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
   
-  def withdraw
-    @user = User.find(params[:id])
-    @user.update(is_active: false)
-    reset_session
-    redirect_to admin_posts_path
-  end
-
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path
+    else
+      render :edit
+    end
+  end
+  
+  def user_params
+    params.require(:user).permit(:is_active)
   end
 end

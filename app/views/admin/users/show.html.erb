@@ -21,7 +21,20 @@
                     <td><%= @user.introduction %></td>
                 </tr>
             </table>
-             <%= link_to "退会させる", users_withdraw_path, class: "btn btn-primary" , data:{ confirm: "このユーザーを退会させますか?" } %>
+            <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch, local: true do |f| %>
+            <tr>
+              <th><%= f.label :is_active, "ユーザステータス" %></th>
+              <td>
+                <%= f.radio_button :is_active, true %>
+                <strong><%= f.label :is_active_true, "有効"%></strong>
+                <%= "　　"%>
+                <%= f.radio_button :is_active, false %>
+                <strong style="color: gray;"><%= f.label :is_active_false, "退会"%></strong>
+              </td>
+            </tr>
+            <div class="text-right"><%= f.submit "編集内容を保存", class: "btn btn-danger text-right" %></div>
+            <% end %>
+             
              <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
-before_action :ensure_guest_user, only: [:edit]
+
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
@@ -20,12 +20,6 @@ before_action :ensure_guest_user, only: [:edit]
     end
   end
   
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.email == "guest@example.com"
-     redirect_to posts_path, notice: "ゲストユーザーはプロフィール編集画面に遷移できません"
-    end
-  end
   
   protected
   
