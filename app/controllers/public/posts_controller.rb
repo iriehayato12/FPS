@@ -5,7 +5,17 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    if params[:latest]
+     @posts = Post.latest.page(params[:page])
+    elsif params[:old]
+     @posts = Post.old.page(params[:page])
+    elsif params[:most_favorited]
+     @posts = Post.most_favorited
+     @posts = Kaminari.paginate_array(@posts).page(params[:page])
+    else
+     @posts = Post.page(params[:page])
+    end
+    
     @categories = Category.all
   end
   
