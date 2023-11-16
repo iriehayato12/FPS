@@ -1,4 +1,6 @@
 class Public::NotificationsController < ApplicationController
+before_action :authenticate_user!
+
  def index
     @notifications = current_user.notifications.order(created_at: :desc).page(params[:page]).per(20)
     @notifications.where(checked: false).each do |notification|
@@ -8,7 +10,7 @@ class Public::NotificationsController < ApplicationController
  end
 
  def destroy
-    @notifications = current_end_user.notifications.destroy_all
+    @notifications = current_user.notifications.destroy_all
     redirect_to notifications_path
  end
 end

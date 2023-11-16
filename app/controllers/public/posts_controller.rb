@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  
   def new
     @post = Post.new
     @categories = Category.all
@@ -22,6 +24,11 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @user = User.find(params[:id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to posts_path
+    end
   end
 
   def show
