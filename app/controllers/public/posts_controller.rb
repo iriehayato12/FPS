@@ -44,12 +44,13 @@ class Public::PostsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
      redirect_to post_path(@post)
     else
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @user = User.find(current_user.id)
     render :index
     end

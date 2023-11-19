@@ -8,13 +8,13 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @user = User.find(params[:id])
      if @user == current_user
        render "edit"
      else
        redirect_to posts_path
      end
-    @categories = Category.all
   end
 
   def update

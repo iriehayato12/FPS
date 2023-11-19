@@ -30,6 +30,9 @@
                 <%= link_to 'カテゴリー一覧', admin_categories_path, class: 'btn btn-light mr-2' %>
               </li>
               <li class='nav-item'>
+                <%= link_to '通報一覧', admin_reports_path, class: 'btn btn-light mr-2' %>
+              </li>
+              <li class='nav-item'>
                 <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-light' %>
               </li>
             <% elsif user_signed_in? %>
