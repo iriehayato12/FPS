@@ -1,17 +1,17 @@
 
 <div class="container mt-3"> 
  <% if user_signed_in? %>
-            <div class="col-md-3 offset-md-1">
+            <div class="col-md-3 offset-md-2">
             <h5 class="text-weight-bold mb-3 ml-4"><span class="bg-light text-nowrap ml-4"><%= flash[:notice] %></span></h5>
                <div class="row mt-4 ml-5">
                 <% if @user == current_user %> 
-                　　<h3 class="text-center"><span class="bg-dark text-light">マイページ</span></h3>
+                　　<h3 class="text-center mt-3"><span class="bg-dark text-light">マイページ</span></h3>
                 <% else %>
                     <h4><span class="bg-dark text-light text-nowrap"><%= @user.name %>さんのユーザー情報</span></h4>
                 <% end %>
                 </div>
             </div>
-       <div class="row mt-3">
+       <div class="row mt-3 ml-5">
          <div class="col-md-7">
             <table class="table table-border table-dark">
                 <tr>
