@@ -41,10 +41,10 @@ Report.find_or_create_by!(reason:"不適切な表現") do |report|
    report.status = 0
 end
 
-Category.create(name: "APEX", id: 1)
-Category.create(name: "VALORANT", id: 2) 
-Category.create(name: "overwatch", id: 3)
-Category.create(name: "COD", id: 4)
+Category.create(name: "APEX")
+Category.create(name: "VALORANT") 
+Category.create(name: "overwatch")
+Category.create(name: "COD")
 
 
 Post.find_or_create_by!(title: "フレンド募集！！") do |post|
