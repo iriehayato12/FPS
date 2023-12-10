@@ -18,7 +18,7 @@
 - 初めてFPSをするとき
 ​
 ## 設計書
-後ほど作成予定
+https://docs.google.com/spreadsheets/d/1lXFpkBaoq5rtBjI7ZTaeTOO_Jh6qQB_eDoQii5cIYWE/edit#gid=0
 ​
 ## 開発環境
 - OS：Linux(CentOS)
