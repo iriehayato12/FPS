@@ -35,7 +35,10 @@
             <div class="text-right"><%= f.submit "編集内容を保存", class: "btn btn-danger text-right" %></div>
             <% end %>
              
-             <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
+             <div class="text-right"><%= link_to favorites_user_path(@user) do %>
+                                     <%= @user.name %>さんのいいね投稿一覧
+                                     <% end %>
+             </div>
         </div>
     </div>
 </div>

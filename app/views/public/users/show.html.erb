@@ -33,7 +33,11 @@
             <% if @user != current_user %>
              <%= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>
             <% end %>
-             <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
+             <div class="text-right">
+                <%= link_to favorites_user_path(@user) do %>
+                 <%= @user.name %>のいいね投稿一覧
+                <% end %>
+            </div>
          </div>
        </div>
  <% else %>
@@ -65,7 +69,11 @@
             <% if @user == current_user %>
              <%= link_to "編集",edit_user_path(@user),class: "btn btn-primary" %>
             <% end %>
-             <div class="text-right"><%= link_to ">>いいね投稿一覧", favorites_user_path(@user) %></div>
+            <div class="text-right">
+                <%= link_to favorites_user_path(@user) do %>
+                 <%= @user.name %>のいいね投稿一覧
+                <% end %>
+            </div>
         </div>
     </div>
  <% end %>

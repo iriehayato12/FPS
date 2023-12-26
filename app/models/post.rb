@@ -7,6 +7,9 @@ class Post < ApplicationRecord
  #通知機能
  has_one :notification, as: :subject, dependent: :destroy
  
+ validates :title, presence: true
+ validates :body, presence: true
+ 
  scope :latest, -> {order(created_at: :desc)}
  scope :old, -> {order(created_at: :asc)}
  scope :most_favorited, -> { includes(:favorited_users)
